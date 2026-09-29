@@ -2,11 +2,11 @@
 
 ## Project settings
 
-Create or reuse a **Git-integrated Pages project**, connected to `OptiLabResearch/armonia`. Do not deploy to GitHub Pages and do not substitute a Workers project or a Direct Upload project.
+The **Git-integrated Pages project** `armonia` is connected to `OptiLabResearch/armonia` in the Growthimize account. Its assigned hostname is `armonia-6hg.pages.dev`. Do not deploy to GitHub Pages and do not substitute a Workers project or a Direct Upload project.
 
 | Setting                      | Value                                 |
 | ---------------------------- | ------------------------------------- |
-| Suggested Pages project name | `armonia` (subject to availability)   |
+| Suggested Pages project name | `armonia` / `armonia-6hg.pages.dev`   |
 | Production branch            | `main`                                |
 | Preview branch               | `feat/swedish-armonia-site`           |
 | Root directory               | Repository root                       |
@@ -20,6 +20,10 @@ Create or reuse a **Git-integrated Pages project**, connected to `OptiLabResearc
 Keep the production launch gate enabled. `astro.config.mjs` additionally recognizes Cloudflare's documented `CF_PAGES=1` and `CF_PAGES_BRANCH=main` variables, so even the first production build refuses unfinished content. The explicit production-only variable protects the gate if the production branch is later renamed. Do **not** set it on the preview environment.
 
 The initial `main` branch is a bootstrap commit to allow a reviewable feature PR. It does not contain a deployable website. Connect the repository, enable previews for the feature branch, and review its preview deployment. The production build remains blocked until the business content is confirmed and the reviewed PR is merged. Do not merge simply to obtain a preview.
+
+Automatic production deployments are currently disabled. Enable them only after content approval and PR review. Preview deployments are restricted to `feat/swedish-armonia-site`.
+
+Local API access uses `.env.cloudflare`, ignored by Git with file mode 0600. Do not commit or paste its token into logs. Required scopes are Account → Cloudflare Pages → Edit, Zone → Zone → Read, and Zone → DNS → Edit for the intended account and `optiqo.dev`. The token is used locally; it is not a website build variable.
 
 ## Domain and verification
 

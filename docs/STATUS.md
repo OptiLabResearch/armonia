@@ -13,15 +13,17 @@ Implementation is available in [draft pull request #1](https://github.com/OptiLa
 - Responsive AVIF/WebP/JPEG output, social image, canonical metadata, sitemap, robots file, and Cloudflare security headers.
 - Unit and browser tests, CI workflow, content-editing instructions, and reviewed Cloudflare setup instructions.
 
-## Deployment blockers
+## Hosting status and launch blockers
 
-Cloudflare CLI authentication was checked with `wrangler whoami`: **not authenticated**. Following explicit user approval, the existing Bitwarden bootstrap was used successfully without displaying or persisting secret values. That machine account can see only the **AI** project. Its sole Cloudflare token is `CLOUDFLARE_WORKERS_AI_API_KEY`; the other Cloudflare entry is an account ID. Token verification returned HTTP 401 (`Invalid API Token`), Pages access returned HTTP 401 (`Authentication error`), and the `optiqo.dev` zone lookup returned HTTP 403 (`Invalid access token`). A metadata search found no separate full-access Cloudflare token in the accessible project.
+The repository is public. GitHub Actions run [36618484081](https://github.com/OptiLabResearch/armonia/actions/runs/36618484081) passed all checks, including hosted browser tests. The earlier account/spending restriction is resolved.
 
-The remaining credential blocker is a **valid Cloudflare token accessible to this Bitwarden machine account**, not local approval. Grant it access to the project containing the intended token, or add a dedicated `CLOUDFLARE_API_TOKEN` to an accessible project. Keep existing unrelated credentials unchanged. Pages setup needs account Pages edit access; domain setup also needs zone read and DNS edit access for `optiqo.dev`.
+Cloudflare access is working through a user-supplied token in the ignored local `.env.cloudflare` file (mode 0600). Its value is never stored in project documentation or Git. The previous Bitwarden token was invalid and is not used.
 
-No Pages project, Git integration, preview deployment, DNS record, or custom domain has been created or changed. Domain/HTTPS verification remains pending.
+Created the **armonia** Cloudflare Pages project in **Growthimize**, connected to `OptiLabResearch/armonia` through the existing GitHub integration. Cloudflare assigned `armonia-6hg.pages.dev`. The build command is `npm run build`, output is `dist`, and Node 24 is configured. Preview builds are enabled for `feat/swedish-armonia-site`. Production branch is `main`, with automatic production deployments disabled and the explicit launch gate enabled. This documentation push requests the first branch preview; its hosted result remains to be verified.
 
-The public launch is additionally blocked by missing confirmed practitioner details, contact/address/directions, treatment duration/price/approval, external booking URL, and Swedish copy approval. `launchReady` and `copyApproved` remain false. The initial `main` branch is only a bootstrap commit; website implementation is isolated on `feat/swedish-armonia-site` for PR review. No merge is authorized by this delivery.
+No custom domain or DNS record has been created. `armonia.optiqo.dev` had no existing DNS record when checked. Associate the hostname with Pages before creating its CNAME, after approved production is ready.
+
+Public launch remains blocked by missing confirmed practitioner details, contact/address/directions, treatment duration/price/approval, external booking URL, and Swedish copy approval. `launchReady` and `copyApproved` remain false. The initial `main` branch is only a bootstrap commit; website implementation is isolated on `feat/swedish-armonia-site` for PR review. No merge is authorized by this delivery.
 
 ## Review notes
 
@@ -43,6 +45,6 @@ Browser accessibility checks identified two low-contrast secondary text colours;
 - Generated foliage has a real alpha channel. All seven generated assets were visually inspected.
 - Desktop/tablet/mobile homepage screenshots and desktop/mobile inner-page screenshots were captured for visual review. Durable homepage previews are in `docs/previews/`.
 - Final independent review verified the fixes and reported no remaining substantive bugs in its scope.
-- GitHub Actions run `36617268068` did not start any steps: GitHub reported failed account payments or a spending-limit restriction. This is an account-level blocker, not a failing repository test. Local checks above passed; hosted CI remains unverified.
+- GitHub Actions run `36618484081`: all checks passed after the repository became public.
 
-Automated accessibility checks are not a complete accessibility certification. Browser execution was Chromium-only. Hosted Cloudflare preview, real external booking, custom domain, and HTTPS checks could not be run without account access and confirmed business data.
+Automated accessibility checks are not a complete accessibility certification. Browser execution was Chromium-only. Hosted Cloudflare preview verification is pending its first deployment. Real external booking, custom domain, and production HTTPS checks await confirmed business data and launch approval.
