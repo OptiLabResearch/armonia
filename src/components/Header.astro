@@ -1,0 +1,85 @@
+---
+import Mark from './Mark.astro';
+import BookingButton from './BookingButton.astro';
+import { navigation } from '../data/site';
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <nav class="desktop-nav nav-left" aria-label="Huvudmeny">
+      {
+        navigation.slice(0, 2).map((item) => (
+          <a
+            href={item.href}
+            aria-current={path === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a href="/" class="brand" aria-label="Armonia – till startsidan"
+      ><Mark /><span class="wordmark">ARMONIA</span><span class="brand-tagline"
+        >EN STUND FÖR DIG</span
+      ></a
+    >
+    <div class="nav-right">
+      <nav class="desktop-nav" aria-label="Om och kontakt">
+        {
+          navigation.slice(2).map((item) => (
+            <a
+              href={item.href}
+              aria-current={path === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <BookingButton class="header-booking" />
+    </div>
+    <details class="mobile-menu">
+      <summary
+        ><span>Meny</span><span class="menu-lines" aria-hidden="true"
+        ></span></summary
+      >
+      <nav aria-label="Mobilmeny">
+        {
+          navigation.map((item) => (
+            <a
+              href={item.href}
+              aria-current={path === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <BookingButton />
+      </nav>
+    </details>
+  </div>
+</header>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  const summary = menu?.querySelector('summary');
+  menu?.querySelectorAll('a').forEach((link) =>
+    link.addEventListener('click', () => {
+      menu.open = false;
+    }),
+  );
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) {
+      menu.open = false;
+      summary?.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (
+      menu?.open &&
+      event.target instanceof Node &&
+      !menu.contains(event.target)
+    )
+      menu.open = false;
+  });
+</script>

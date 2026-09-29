@@ -1,0 +1,61 @@
+---
+import '@fontsource-variable/cormorant-garamond/wght.css';
+import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+import '@fontsource-variable/manrope/wght.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { isDraft } from '../data/site';
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#454b32" />
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={isDraft || noindex ? 'noindex, nofollow' : 'index, follow'}
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:site_name" content="Armonia" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/social.jpg', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Armonia – en stund för dig. Illustrativ bild av ett litet behandlingsrum."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#innehall" class="skip-link">Hoppa till innehållet</a>
+    {
+      isDraft && (
+        <div class="preview-notice">
+          En första inblick i Armonia <span aria-hidden="true">·</span>{' '}
+          Bokningen öppnar snart
+        </div>
+      )
+    }
+    <Header />
+    <main id="innehall" tabindex="-1"><slot /></main>
+    <Footer />
+  </body>
+</html>

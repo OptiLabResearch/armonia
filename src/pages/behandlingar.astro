@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import TreatmentCard from '../components/TreatmentCard.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { business, isDraft } from '../data/site';
+---
+
+<Base
+  title="Behandlingar | Armonia"
+  description="Läs om behandlingar hos Armonia, hur ett besök går till och hur du bokar din stund."
+>
+  <div class="page-intro container narrow">
+    <p class="eyebrow">LÅT VARDAGEN VÄNTA</p><h1>
+      En stund för <em>kroppen.</em>
+    </h1><p>
+      Det börjar med en paus. Här kan du läsa om behandlingarna och hitta
+      information inför ditt besök.
+    </p>
+  </div>
+  <section class="container treatment-list" aria-label="Behandlingar">
+    {
+      business.treatments.map((treatment) => (
+        <TreatmentCard treatment={treatment} />
+      ))
+    }
+  </section>
+  <section
+    class="section container visit-section"
+    aria-labelledby="visit-title"
+  >
+    <div>
+      <p class="eyebrow">INFÖR DIN STUND</p><h2 id="visit-title">
+        Det ska kännas enkelt<br />att komma hit.
+      </h2><p>
+        Har du frågor eller något du vill berätta inför besöket? Ta kontakt
+        innan du bokar så kan ni prata om vad som passar dig.
+      </p>{
+        isDraft && (
+          <p class="editorial-note">
+            Information om bokning, betalning och avbokning kompletteras inför
+            öppning.
+          </p>
+        )
+      }
+    </div><div class="steps">
+      <article>
+        <span>01</span><div>
+          <h3>Hitta din behandling</h3><p>
+            Läs presentationen och ta del av tid och pris innan du bokar.
+          </p>
+        </div>
+      </article><article>
+        <span>02</span><div>
+          <h3>Boka din stund</h3><p>
+            Välj en ledig tid via vår externa bokningstjänst när bokningen är
+            öppen.
+          </p>
+        </div>
+      </article><article>
+        <span>03</span><div>
+          <h3>Kom som du är</h3><p>
+            Ge dig själv tid att landa. Praktisk information får du i samband
+            med bokningen.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <ContactBand />
+</Base>

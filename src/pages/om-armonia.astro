@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import ContactBand from '../components/ContactBand.astro';
+import Mark from '../components/Mark.astro';
+import { business } from '../data/site';
+import room from '../assets/images/room-view.png';
+import detail from '../assets/images/room-detail.png';
+---
+
+<Base
+  title="Om Armonia | Litet rum, stor omtanke"
+  description="Lär känna tanken bakom Armonia. Ett litet behandlingsrum och en personlig plats där du får stanna upp en stund."
+>
+  <div class="page-intro container narrow">
+    <p class="eyebrow">TANKEN BAKOM ARMONIA</p><h1>
+      Litet rum.<br /><em>Stor omtanke.</em>
+    </h1><p>
+      En enkel plats. Ett personligt möte.<br />En stund som får vara din.
+    </p>
+  </div>
+  <section
+    class="container about-grid"
+    id="rummet"
+    aria-labelledby="room-heading"
+  >
+    <div class="about-photo">
+      <Photo
+        src={room}
+        alt="AI-genererad illustration av ett litet behandlingsrum med ett vanligt fönster, massagebänk och trähylla."
+        eager
+      /><p class="image-disclosure">
+        Stämningsbild – inte ett fotografi av den faktiska lokalen.
+      </p>
+    </div><div class="about-copy">
+      <p class="eyebrow">EN PLATS ATT LANDA</p><h2 id="room-heading">
+        Det behöver inte vara stort<br />för att kännas <em>välkomnande.</em>
+      </h2><p>
+        Armonia finns i ett litet, hyrt behandlingsrum med ett vanligt fönster.
+        Här är tanken att skapa plats för lugn och personlig omtanke, med enkla
+        medel.
+      </p><p>
+        En stund här får vara ett avbrott i vardagen. Tid att lägga annat åt
+        sidan och bara vara.
+      </p>
+    </div>
+  </section>
+  <section
+    class="container section practitioner"
+    aria-labelledby="practitioner-title"
+  >
+    <div class="practitioner-copy">
+      <Mark /><p class="eyebrow">MÄNNISKAN BAKOM</p><h2 id="practitioner-title">
+        {
+          business.practitionerName
+            ? `Hej, jag heter ${business.practitionerName}.`
+            : 'Ett personligt möte.'
+        }
+      </h2><p>
+        {
+          business.practitionerBio ??
+            'Bakom Armonia finns en vilja att ge det lilla mötet plats. Att välkomna, lyssna och skapa en stund med dig i centrum.'
+        }
+      </p>{
+        !business.practitionerName && (
+          <p class="editorial-note">
+            Här kommer en personlig presentation av behandlaren. Namn, bakgrund
+            och utbildning kompletteras före öppning.
+          </p>
+        )
+      }
+    </div><div class="practitioner-photo">
+      <Photo
+        src={detail}
+        alt="Illustrativ närbild av en enkel trähylla med handdukar och en grön växt."
+      />
+    </div>
+  </section>
+  <ContactBand />
+</Base>

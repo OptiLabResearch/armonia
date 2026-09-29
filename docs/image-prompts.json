@@ -1,0 +1,50 @@
+{
+  "created": "2026-09-29",
+  "generator": "Built-in image_gen",
+  "reference": "User-supplied Armonia website concept for style only. Room composition based on user's description of a modest rented room with one normal-sized window.",
+  "disclosure": "AI-generated illustrative imagery, not photographs of the actual premises or practitioner.",
+  "assets": [
+    {
+      "file": "src/assets/images/hero-room.png",
+      "prompt": "Use case: photorealistic-natural. Create a photographic website hero for Armonia, a Swedish independent massage practitioner renting a modest small treatment room. Landscape 3:2 composition. Realistically small roughly 10 square metre rectangular room, one ordinary single residential-size window on the LEFT wall with a plain natural linen curtain, matte warm ivory painted walls, plain light oak laminate floor. One practical portable wooden massage table with ivory fitted linen and a muted warm taupe blanket, rolled cream towel on top. One simple narrow pale oak shelf against the back right wall, with two small unbranded amber oil bottles, folded towels and a small trailing plant. A tiny oak stool. One small botanical framed print. Soft overcast Swedish daylight from the normal-sized window, gently warm but believable, not orange. Honest intimate documentary interior photography, fine natural textures, calm composition, table occupies centre-right, some clear wall area on left useful for cropping. No people, no text, no logo, no watermarks. NOT a spa, no luxury hotel, no oversized or multiple windows, no expansive room, no grand architecture, no candles or elaborate equipment. Beautiful through simplicity and care. Deliver one image.",
+      "reference": null
+    },
+    {
+      "file": "src/assets/images/room-view.png",
+      "prompt": "Original photographic asset for Swedish massage website Armonia. Restrained cream, warm taupe, pale oak and muted olive palette. Soft natural daylight, realistic materials, modest and personal not a luxury spa. No text, no logo, no watermark. Use the attached room photo as the exact visual reference. Photograph the SAME small room from a slightly different angle near the foot of the table looking toward the back wall, landscape 3:2. Preserve the one normal-sized window and white radiator on left, curtain, portable wooden table, taupe blanket and rolled towel, small botanical print centred on rear wall, narrow oak shelf on right with trailing plant and towels and bottles. Keep room size modest, not more spacious. Do not add furniture, windows or facilities.",
+      "reference": "src/assets/images/hero-room.png"
+    },
+    {
+      "file": "src/assets/images/massage.png",
+      "prompt": "Photorealistic editorial website photo of a professional hand and forearm massage. Landscape 3:2. Tight crop showing ONLY an adult client's hand and forearm resting palm-up on a folded cream towel on a simple wooden table, and an adult practitioner's hands gently supporting and massaging the palm. Both adults wear opaque long-sleeved cream cotton shirts; sleeves end at forearm. Everyone fully clothed, no bodies, shoulders or faces in frame. Anatomy realistic. Soft natural window daylight, muted ivory, taupe and pale oak colours, simple small practice setting, warm and respectful human care. No text, no logo, no watermark.",
+      "reference": null
+    },
+    {
+      "file": "src/assets/images/linen.png",
+      "prompt": "Original photographic asset for Swedish massage website Armonia. Restrained cream, warm taupe, pale oak and muted olive palette. Soft natural daylight, realistic materials, modest and personal not a luxury spa. No text, no logo, no watermark. Landscape 3:2 intimate still life of three neatly folded cream cotton towels on a simple pale oak stool next to draped warm taupe linen. Plain ivory wall and softly blurred leafy plant in background. Restrained composition, textile weave tactile, side daylight from a small window outside the frame. No staged spa props, no candle.",
+      "reference": null
+    },
+    {
+      "file": "src/assets/images/oil.png",
+      "prompt": "Original photographic asset for Swedish massage website Armonia. Restrained cream, warm taupe, pale oak and muted olive palette. Soft natural daylight, realistic materials, modest and personal not a luxury spa. No text, no logo, no watermark. Portrait 4:5 quiet still life close-up of one small unbranded amber glass massage oil bottle with simple black pump on a plain pale oak shelf, a folded cream washcloth beside it, one soft out-of-focus green leaf at the side. Warm ivory wall. Believable inexpensive everyday supplies in a small rented treatment room. No label or writing, no fancy packaging, no candle.",
+      "reference": null
+    },
+    {
+      "file": "src/assets/images/room-detail.png",
+      "prompt": "Original photographic asset for Swedish massage website Armonia. Restrained cream, warm taupe, pale oak and muted olive palette. Soft natural daylight, realistic materials, modest and personal not a luxury spa. No text, no logo, no watermark. Use the attached room photo as reference. A portrait 4:5 close-up photograph of the SAME simple narrow oak shelf in that small room: trailing pothos at the top, folded ivory towels and two tiny unbranded amber bottles below. Crop out the table and window, show only shelf and warm ivory wall. Same soft window daylight, matching materials and plant. Not a spa product advertisement.",
+      "reference": "src/assets/images/hero-room.png"
+    },
+    {
+      "file": "src/assets/images/botanical.png",
+      "prompt": "Use case: illustration-story. Create one delicate hand-painted botanical sprig for a cream and olive Swedish massage website. A single graceful olive branch with slender stems and about twelve muted sage and olive leaves, watercolour washes and subtle pencil vein detail, elegant organic asymmetrical diagonal composition, generous negative space, no border, no text, no logo, no pot. Genuinely transparent alpha background, not white and not a checkerboard. Entire branch visible with margins. Square image.",
+      "reference": null
+    }
+  ],
+  "derivatives": [
+    {
+      "file": "public/social.jpg",
+      "source": "src/assets/images/hero-room.png",
+      "method": "Sharp resize/crop to 1200x630 JPEG; no new visual content."
+    }
+  ]
+}

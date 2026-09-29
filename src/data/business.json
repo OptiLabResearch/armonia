@@ -1,0 +1,25 @@
+{
+  "name": "Armonia",
+  "launchReady": false,
+  "copyApproved": false,
+  "practitionerName": null,
+  "practitionerBio": null,
+  "email": null,
+  "phone": null,
+  "streetAddress": null,
+  "postalCode": null,
+  "city": null,
+  "directions": null,
+  "bookingUrl": null,
+  "treatments": [
+    {
+      "id": "massage",
+      "name": "Massage",
+      "description": "En paus från vardagens tempo. Här finns utrymme att landa och låta en stund handla om dig.",
+      "durationMinutes": null,
+      "priceSek": null,
+      "confirmed": false,
+      "bookingUrl": null
+    }
+  ]
+}
