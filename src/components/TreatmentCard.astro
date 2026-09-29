@@ -2,12 +2,34 @@
 import Photo from './Photo.astro';
 import BookingButton from './BookingButton.astro';
 import massage from '../assets/images/massage.png';
+import oil from '../assets/images/oil.png';
+import linen from '../assets/images/linen.png';
+import room from '../assets/images/room-detail.png';
 import { price, type Treatment } from '../data/site';
 interface Props {
   treatment: Treatment;
   compact?: boolean;
 }
 const { treatment, compact = false } = Astro.props;
+const illustrations: Record<string, { src: typeof massage; alt: string }> = {
+  massage: {
+    src: massage,
+    alt: 'Illustrativ bild av varsamma händer under en hand- och underarmsmassage.',
+  },
+  oil: {
+    src: oil,
+    alt: 'Stämningsbild av en oljeflaska och en vikt handduk på en trähylla.',
+  },
+  linen: {
+    src: linen,
+    alt: 'Stämningsbild av rena handdukar och mjukt linne.',
+  },
+  room: {
+    src: room,
+    alt: 'Stämningsbild av en enkel hylla med en grön växt och handdukar.',
+  },
+};
+const illustration = illustrations[treatment.image] ?? illustrations.massage;
 ---
 
 <article
@@ -16,8 +38,8 @@ const { treatment, compact = false } = Astro.props;
 >
   <div class="treatment-photo">
     <Photo
-      src={massage}
-      alt="Illustrativ bild av varsamma händer under en hand- och underarmsmassage."
+      src={illustration.src}
+      alt={illustration.alt}
       sizes={compact
         ? '(min-width: 760px) 33vw, 100vw'
         : '(min-width: 760px) 50vw, 100vw'}
@@ -30,6 +52,14 @@ const { treatment, compact = false } = Astro.props;
     {
       !compact && (
         <>
+          <>
+            <h3>Så är stunden tänkt</h3>
+            <p>{treatment.experience}</p>
+          </>
+          <>
+            <h3>En stund för dig</h3>
+            <p>{treatment.suitableFor}</p>
+          </>
           <dl class="treatment-facts">
             <>
               <div>

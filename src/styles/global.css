@@ -661,6 +661,20 @@
     color: #686d5a;
     font-size: 14px;
   }
+  .treatment-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-bottom: 20px;
+  }
+  .treatment-navigation + .editorial-note {
+    margin-bottom: 30px;
+  }
+  .treatment-copy h3 {
+    margin-top: 22px;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+  }
   .treatment-list {
     display: grid;
     gap: 40px;

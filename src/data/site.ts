@@ -5,6 +5,9 @@ export interface Treatment {
   id: string;
   name: string;
   description: string;
+  experience: string;
+  suitableFor: string;
+  image: string;
   durationMinutes: number | null;
   priceSek: number | null;
   confirmed: boolean;

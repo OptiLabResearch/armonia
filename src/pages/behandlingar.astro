@@ -6,17 +6,29 @@ import { business, isDraft } from '../data/site';
 ---
 
 <Base
-  title="Behandlingar | Armonia"
-  description="Läs om behandlingar hos Armonia, hur ett besök går till och hur du bokar din stund."
+  title="Massage & egenomsorg i Halmstad | Armonia"
+  description="Utforska Armonias planerade behandlingar i Halmstad: massage, kroppspeeling, ansiktsritual och avslappning. Läs om upplägg och kontakt inför ditt besök."
 >
   <div class="page-intro container narrow">
     <p class="eyebrow">LÅT VARDAGEN VÄNTA</p><h1>
       En stund för <em>kroppen.</em>
     </h1><p>
-      Det börjar med en paus. Här kan du läsa om behandlingarna och hitta
-      information inför ditt besök.
+      Massage, kroppsvård och tid att bara vara. Här får du en första inblick i
+      behandlingarna som planeras för Armonia i Halmstad.
     </p>
   </div>
+  <nav class="container treatment-navigation" aria-label="Hitta behandling">
+    {
+      business.treatments.map((treatment) => (
+        <a class="text-link" href={`#${treatment.id}`}>
+          {treatment.name}
+        </a>
+      ))
+    }
+  </nav>
+  <p class="container editorial-note">
+    Preliminärt utbud. Beskrivningar, tider och priser fastställs före öppning.
+  </p>
   <section class="container treatment-list" aria-label="Behandlingar">
     {
       business.treatments.map((treatment) => (

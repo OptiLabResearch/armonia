@@ -24,7 +24,7 @@ for (const route of routes) {
       'content',
       launchIssues(business).length || route === '/404.html'
         ? 'noindex, nofollow'
-        : 'index, follow',
+        : 'index, follow, max-image-preview:large',
     );
     expect(
       await page.evaluate(
@@ -170,7 +170,10 @@ test('provisional booking and contact details are clear', async ({ page }) => {
     'href',
     'tel:0734816735',
   );
-  await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
+  await expect(page.locator('a[href^="mailto:"]')).toHaveAttribute(
+    'href',
+    `mailto:${business.email}`,
+  );
   await page.goto('/');
   await expect(page.locator('.hero .button')).toHaveAttribute(
     'href',

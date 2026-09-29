@@ -21,7 +21,7 @@ The development server runs at `http://localhost:4321`. `npm run build` writes t
 - `src/styles/global.css`: cream/olive palette, typography, shared components, and responsive layouts.
 - `src/assets/images/`: seven original AI-generated assets and one edited Samantha portrait. Their prompts and provenance are recorded in `docs/image-prompts.json`.
 
-The sole initial treatment entry, **Massage**, is provisional. Confirm its name, copy, price in SEK, and duration in minutes; set `confirmed: true` only after approval. No other services, qualifications, client reviews, or specific health outcomes have been invented. Additional treatments use the same generic massage image until appropriate treatment-specific imagery is added.
+Four service drafts are provided: **Massage**, **Kroppspeeling**, **Ansiktsritual**, and **Avslappningsstund**. Each has a description, proposed experience, audience, and an illustration key in `business.json`. Samantha can edit these before launch. Prices, durations and availability remain unconfirmed; do not set `confirmed: true` until reviewed. The About page has an editable first-person draft based on her business brief, without invented qualifications, work history, reviews or health outcomes.
 
 Set `bookingUrl` to an HTTPS URL from the actual external booking service. A treatment may override it with its own HTTPS `bookingUrl`, or use `null` to inherit the site-wide link. Missing/invalid links lead to `/kontakt/#bokning`, which clearly explains the pending booking setup. No nonfunctional contact form or fake contact links are shown.
 
@@ -59,4 +59,15 @@ See [Cloudflare setup](docs/deployment.md) and [delivery status](docs/STATUS.md)
 
 ### Provisional contact details
 
-Samantha Paladino, Halmstad and telephone 0734 816 735 are supplied by the owner. Fiskaregatan 15, 302 90 Halmstad is provisional (`addressConfirmed: false`). The current booking URL is the temporary Bokadirekt homepage (`bookingUrlConfirmed: false`); replace it with the practitioner booking page and confirm it before launch. The chosen email prefix is `hej`; leave `email` null until the exact `.se` domain and mailbox are ready. Do not guess a domain.
+Samantha Paladino, Halmstad and telephone 0734 816 735 are supplied by the owner. Fiskaregatan 15, 302 90 Halmstad is provisional (`addressConfirmed: false`). The current booking URL is the temporary Bokadirekt homepage (`bookingUrlConfirmed: false`); replace it with the practitioner booking page and confirm it before launch. The owner supplied `info@armonia.se`; it is now the contact email. Mailbox provisioning/delivery was not tested.
+
+## SEO, images and performance
+
+- Unique Swedish titles/descriptions include Halmstad; canonical and social URLs are generated from Astro's `site`. The sitemap includes only the four content pages, and the 404 stays noindex.
+- The draft remains noindex. Before launch, verify the final hosting domain, update `site` in `astro.config.mjs` and the sitemap URL in `robots.txt.ts` together, and confirm all launch data. Business structured data is deferred until the address and business details are confirmed. Preview protection is intentional, not an SEO failure.
+- Fonts use three self-hosted Latin WOFF2 variable files through `src/styles/fonts.css`, including Swedish characters. Main serif and sans files are preloaded; all faces use `font-display: swap`. Their Fontsource packages retain OFL licenses.
+- Local images pass through Astro Picture for AVIF/WebP/JPEG, explicit dimensions, responsive sizes, and source-width-limited candidates. The hero loads eagerly at high priority; below-fold imagery loads lazily. Illustrative images and Samantha's edited portrait are disclosed.
+- Cloudflare caches fingerprinted `/_astro/` assets for one year with `immutable`. HTML is not given that policy. No third-party fonts, trackers, embeds, or runtime UI framework are loaded.
+- `tests/browser/quality.spec.ts` checks unique metadata, sitemap/canonical agreement, local font requests, image attributes, layout shifts and first-view resource budgets. Reports contain local lab snapshots, not Lighthouse scores or real-user Core Web Vitals.
+
+References: [Astro images](https://docs.astro.build/en/guides/images/), [Google title guidance](https://developers.google.com/search/docs/appearance/title-link), [Google image guidance](https://developers.google.com/search/docs/appearance/google-images).
