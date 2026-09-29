@@ -768,7 +768,8 @@
   }
   .practitioner-photo img {
     width: 100%;
-    aspect-ratio: 1;
+    object-position: center 30%;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
   }
   .contact-layout {
@@ -1329,7 +1330,7 @@
       padding-inline: 5px;
     }
     .practitioner-photo img {
-      aspect-ratio: 1.3;
+      aspect-ratio: 4 / 5;
     }
     .contact-layout {
       grid-template-columns: 1fr;

@@ -2,15 +2,15 @@
   "name": "Armonia",
   "launchReady": false,
   "copyApproved": false,
-  "practitionerName": null,
+  "practitionerName": "Samantha Paladino",
   "practitionerBio": null,
   "email": null,
-  "phone": null,
-  "streetAddress": null,
-  "postalCode": null,
-  "city": null,
+  "phone": "0734 816 735",
+  "streetAddress": "Fiskaregatan 15",
+  "postalCode": "302 90",
+  "city": "Halmstad",
   "directions": null,
-  "bookingUrl": null,
+  "bookingUrl": "https://www.bokadirekt.se/",
   "treatments": [
     {
       "id": "massage",
@@ -21,5 +21,7 @@
       "confirmed": false,
       "bookingUrl": null
     }
-  ]
+  ],
+  "addressConfirmed": false,
+  "bookingUrlConfirmed": false
 }

@@ -2,7 +2,7 @@
   "created": "2026-09-29",
   "generator": "Built-in image_gen",
   "reference": "User-supplied Armonia website concept for style only. Room composition based on user's description of a modest rented room with one normal-sized window.",
-  "disclosure": "AI-generated illustrative imagery, not photographs of the actual premises or practitioner.",
+  "disclosure": "AI-generated illustrative room and treatment imagery. Samantha portrait is AI-edited using her original photograph; its setting is illustrative.",
   "assets": [
     {
       "file": "src/assets/images/hero-room.png",
@@ -38,6 +38,14 @@
       "file": "src/assets/images/botanical.png",
       "prompt": "Use case: illustration-story. Create one delicate hand-painted botanical sprig for a cream and olive Swedish massage website. A single graceful olive branch with slender stems and about twelve muted sage and olive leaves, watercolour washes and subtle pencil vein detail, elegant organic asymmetrical diagonal composition, generous negative space, no border, no text, no logo, no pot. Genuinely transparent alpha background, not white and not a checkerboard. Entire branch visible with margins. Square image.",
       "reference": null
+    },
+    {
+      "file": "src/assets/images/samantha-portrait.png",
+      "prompt": "Use case: identity-preserve. Create one natural photographic practitioner portrait for the Swedish Armonia massage website. Image 1 is the edit target and identity reference: Samantha Paladino. Preserve her actual recognizable face, age, facial proportions, warm olive skin, dark curly shoulder-length hair, white fabric headband, small hoop earrings and natural expression. Do not beautify, change facial shape, lighten skin or make her younger. Image 2 is background/material reference only, not a claim of real premises: the modest small treatment room with one ordinary window, cream wall, simple oak shelf and a few towels/plants. Place Samantha in that understated room, waist-up, relaxed standing pose, gentle authentic smile looking toward camera. She wears a simple opaque ivory linen blouse with modest neckline and sleeves, no embroidered pattern. Hands relaxed naturally in lower frame. Portrait 4:5 framing, generous breathing room above hair, face in upper middle, shoulders fully inside frame so useful mobile crops retain face. Soft natural window daylight, warm cream, muted olive and pale oak palette. Real skin texture, editorial photography, unpretentious, no luxury spa. Only Samantha, no clients, no text, logo, watermark, certificates, props or claims. Preserve likeness carefully.",
+      "reference": "https://sustineer.com/images/samantha/original/samantha-reference-portrait-01.webp",
+      "styleReference": "src/assets/images/hero-room.png",
+      "gallery": "https://sustineer.com/samantha-gallery",
+      "disclosure": "AI-edited portrait based on Samantha's supplied photograph; background is illustrative."
     }
   ],
   "derivatives": [

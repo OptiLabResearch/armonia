@@ -18,6 +18,8 @@ export interface Business {
   practitionerBio: string | null;
   email: string | null;
   phone: string | null;
+  addressConfirmed: boolean;
+  bookingUrlConfirmed: boolean;
   streetAddress: string | null;
   postalCode: string | null;
   city: string | null;

@@ -19,13 +19,13 @@ The development server runs at `http://localhost:4321`. `npm run build` writes t
 - `src/data/site.ts`: typed content interface, navigation, Swedish price formatting, and booking fallback.
 - `src/pages/`: Swedish editorial copy for home, treatments, about, contact, and the 404 page.
 - `src/styles/global.css`: cream/olive palette, typography, shared components, and responsive layouts.
-- `src/assets/images/`: seven original AI-generated assets. Their prompts and provenance are recorded in `docs/image-prompts.json`.
+- `src/assets/images/`: seven original AI-generated assets and one edited Samantha portrait. Their prompts and provenance are recorded in `docs/image-prompts.json`.
 
 The sole initial treatment entry, **Massage**, is provisional. Confirm its name, copy, price in SEK, and duration in minutes; set `confirmed: true` only after approval. No other services, qualifications, client reviews, or specific health outcomes have been invented. Additional treatments use the same generic massage image until appropriate treatment-specific imagery is added.
 
 Set `bookingUrl` to an HTTPS URL from the actual external booking service. A treatment may override it with its own HTTPS `bookingUrl`, or use `null` to inherit the site-wide link. Missing/invalid links lead to `/kontakt/#bokning`, which clearly explains the pending booking setup. No nonfunctional contact form or fake contact links are shown.
 
-Room images depict a modest imaginary treatment room, not the actual premises. The site labels them as illustrative. Never use a generated portrait to represent the real practitioner. The treatment illustration is a fully clothed hand-and-forearm massage close-up.
+Room images depict a modest imaginary treatment room, not the actual premises. The site labels them as illustrative. Samantha’s portrait is an AI edit of her real photograph from the owner-supplied gallery, with an illustrative background and a visible disclosure. Preserve her likeness; never substitute a fictional practitioner. The treatment illustration is a fully clothed hand-and-forearm massage close-up.
 
 Astro generates responsive AVIF/WebP/JPEG variants during the build. The foliage keeps its transparency. Fonts are served locally from Fontsource packages. If the hero changes, regenerate the social crop with `node scripts/build-social.mjs` and commit `public/social.jpg`.
 
@@ -56,3 +56,7 @@ ARMONIA_REQUIRE_LAUNCH_READY=1 npm run build
 Both commands deliberately fail until required business details and treatments are complete, `copyApproved` is `true`, and `launchReady` is `true`. This prevents a production Pages build from publishing unresolved content. Re-read all editorial copy with the practitioner before setting the approval flags. Do not change the validation to make a draft pass.
 
 See [Cloudflare setup](docs/deployment.md) and [delivery status](docs/STATUS.md).
+
+### Provisional contact details
+
+Samantha Paladino, Halmstad and telephone 0734 816 735 are supplied by the owner. Fiskaregatan 15, 302 90 Halmstad is provisional (`addressConfirmed: false`). The current booking URL is the temporary Bokadirekt homepage (`bookingUrlConfirmed: false`); replace it with the practitioner booking page and confirm it before launch. The chosen email prefix is `hej`; leave `email` null until the exact `.se` domain and mailbox are ready. Do not guess a domain.

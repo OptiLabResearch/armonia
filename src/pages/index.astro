@@ -12,12 +12,13 @@ import hero from '../assets/images/hero-room.png';
 import room from '../assets/images/room-view.png';
 import oil from '../assets/images/oil.png';
 import detail from '../assets/images/room-detail.png';
+import samantha from '../assets/images/samantha-portrait.png';
 import botanical from '../assets/images/botanical.png';
 ---
 
 <Base
-  title="Armonia – En stund för dig"
-  description="En stund för dig. Mer balans i vardagen. Upptäck Armonia, en liten plats för massage, lugn och personlig omtanke."
+  title="Armonia i Halmstad – En stund för dig"
+  description="En stund för dig. Mer balans i vardagen. Upptäck Armonia, en liten plats för massage, lugn och personlig omtanke i Halmstad."
 >
   <section class="hero" aria-labelledby="hero-title">
     <Photo
@@ -29,7 +30,9 @@ import botanical from '../assets/images/botanical.png';
     />
     <div class="hero-shade"></div>
     <div class="container hero-content">
-      <p class="eyebrow">VÄLKOMMEN TILL ARMONIA</p><h1 id="hero-title">
+      <p class="eyebrow">VÄLKOMMEN TILL ARMONIA I HALMSTAD</p><h1
+        id="hero-title"
+      >
         En stund för dig.<br />Mer balans<br /><em>i vardagen.</em>
       </h1><p class="hero-intro">
         Låt vardagen vänta en liten stund.<br />Här finns plats för lugn,
@@ -155,6 +158,34 @@ import botanical from '../assets/images/botanical.png';
       <Mark /><h3>Plats för lugn</h3><p>Låt vardagen vänta</p>
     </div><div>
       <Icon name="sun" /><h3>I din egen takt</h3><p>Utrymme att landa</p>
+    </div>
+  </section>
+
+  <section
+    class="container section practitioner"
+    aria-labelledby="samantha-title"
+  >
+    <div class="practitioner-copy">
+      <p class="eyebrow">MÄNNISKAN BAKOM ARMONIA</p>
+      <h2 id="samantha-title">
+        Hej, jag heter<br /><em>{business.practitionerName}.</em>
+      </h2>
+      <p>
+        Välkommen till Armonia i {business.city}. Här får det personliga mötet
+        ta plats, med tid för dig och en paus från vardagen.
+      </p>
+      <a class="text-link" href="/om-armonia/"
+        >Lär känna Armonia <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    <div class="practitioner-photo">
+      <Photo
+        src={samantha}
+        alt="AI-bearbetat porträtt av Samantha Paladino, baserat på hennes fotografi."
+      />
+      <p class="image-disclosure">
+        AI-bearbetat porträtt med illustrativ miljö.
+      </p>
     </div>
   </section>
 

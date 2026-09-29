@@ -71,7 +71,10 @@ test('all page links and local anchors resolve', async ({ page, request }) => {
 });
 
 test('booking fallback explains missing booking service', async ({ page }) => {
-  test.skip(isHttpsUrl(business.bookingUrl), 'Real booking is configured.');
+  test.skip(
+    isHttpsUrl(business.bookingUrl),
+    'An external booking link is configured.',
+  );
   await page.goto('/');
   await page.locator('.hero .button').click();
   await expect(page).toHaveURL(/\/kontakt\/#bokning$/);
@@ -82,7 +85,7 @@ test('booking fallback explains missing booking service', async ({ page }) => {
     'Bokningslänk kompletteras',
   );
   await expect(page.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(
-    0,
+    Number(Boolean(business.email)) + Number(Boolean(business.phone)),
   );
 });
 
@@ -146,4 +149,34 @@ test('homepage review screenshot', async ({ page }, testInfo) => {
     path: `test-results/home-${testInfo.project.name}.png`,
     fullPage: true,
   });
+});
+
+test('provisional booking and contact details are clear', async ({ page }) => {
+  test.skip(business.bookingUrlConfirmed, 'Final booking is confirmed.');
+  await page.goto('/kontakt/');
+  await expect(page.locator('#bokning')).toContainText('Bokadirekts startsida');
+  await expect(page.locator('#bokning .button')).toHaveAttribute(
+    'href',
+    business.bookingUrl!,
+  );
+  await expect(page.locator('address')).toContainText(business.streetAddress!);
+  await expect(page.locator('address')).toContainText(
+    `${business.postalCode} ${business.city}`,
+  );
+  await expect(page.locator('.contact-details')).toContainText(
+    'Preliminär adress',
+  );
+  await expect(page.locator('a[href^="tel:"]')).toHaveAttribute(
+    'href',
+    'tel:0734816735',
+  );
+  await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
+  await page.goto('/');
+  await expect(page.locator('.hero .button')).toHaveAttribute(
+    'href',
+    business.bookingUrl!,
+  );
+  await expect(page.locator('#samantha-title')).toContainText(
+    'Samantha Paladino',
+  );
 });

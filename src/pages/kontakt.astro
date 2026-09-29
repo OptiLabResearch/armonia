@@ -9,7 +9,7 @@ import linen from '../assets/images/linen.png';
 ---
 
 <Base
-  title="Kontakt & bokning | Armonia"
+  title="Kontakt & bokning i Halmstad | Armonia"
   description="Boka din stund hos Armonia. Här hittar du kontaktuppgifter, information om bokning och vägbeskrivning."
 >
   <div class="page-intro container narrow">
@@ -28,10 +28,17 @@ import linen from '../assets/images/linen.png';
             <>
               <>
                 <p>
-                  Välj behandling och hitta en tid som passar dig i vår externa
-                  bokningstjänst.
+                  {business.bookingUrlConfirmed
+                    ? 'Välj behandling och hitta en tid som passar dig i vår externa bokningstjänst.'
+                    : 'Bokning kommer att ske via Bokadirekt. Tills vidare går länken till Bokadirekts startsida. Direktlänken till Armonia kompletteras inför öppning.'}
                 </p>
-                <BookingButton label="Till bokningen" />
+                <BookingButton
+                  label={
+                    business.bookingUrlConfirmed
+                      ? 'Till bokningen'
+                      : 'Till Bokadirekt'
+                  }
+                />
               </>
             </>
           ) : (
@@ -61,7 +68,20 @@ import linen from '../assets/images/linen.png';
                 </address>
               ) : (
                 <p class="missing-detail">
-                  Adress och ort kompletteras inför öppning.
+                  {business.city && (
+                    <>
+                      {business.city}
+                      <br />
+                    </>
+                  )}
+                  Gatuadress och postnummer kompletteras inför öppning.
+                </p>
+              )
+            }
+            {
+              !business.addressConfirmed && business.streetAddress && (
+                <p class="missing-detail">
+                  Preliminär adress – bekräftas inför öppning.
                 </p>
               )
             }

@@ -1,5 +1,5 @@
 ---
-import { bookingHref } from '../data/site';
+import { bookingHref, business } from '../data/site';
 interface Props {
   label?: string;
   url?: string | null;
@@ -17,6 +17,10 @@ const {
 <a
   class:list={['button', variant && `button--${variant}`, className]}
   href={bookingHref(url)}
+  aria-label={!business.bookingUrlConfirmed &&
+  bookingHref(url) === business.bookingUrl
+    ? `${label} – tillfällig länk till Bokadirekts startsida`
+    : undefined}
 >
   {label}<span aria-hidden="true">↗</span>
 </a>

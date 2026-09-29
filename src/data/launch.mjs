@@ -14,6 +14,10 @@ export function launchIssues(business) {
     if (typeof business[field] !== 'string' || !business[field].trim())
       issues.push(`Missing ${field}`);
   }
+  if (business.addressConfirmed !== true)
+    issues.push('The provisional address must be confirmed');
+  if (business.bookingUrlConfirmed !== true)
+    issues.push('The final practitioner booking URL must be confirmed');
   if (!isHttpsUrl(business.bookingUrl))
     issues.push('A valid HTTPS bookingUrl is required');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(business.email ?? ''))

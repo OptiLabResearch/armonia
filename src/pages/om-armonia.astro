@@ -5,7 +5,7 @@ import ContactBand from '../components/ContactBand.astro';
 import Mark from '../components/Mark.astro';
 import { business } from '../data/site';
 import room from '../assets/images/room-view.png';
-import detail from '../assets/images/room-detail.png';
+import samantha from '../assets/images/samantha-portrait.png';
 ---
 
 <Base
@@ -36,9 +36,9 @@ import detail from '../assets/images/room-detail.png';
       <p class="eyebrow">EN PLATS ATT LANDA</p><h2 id="room-heading">
         Det behöver inte vara stort<br />för att kännas <em>välkomnande.</em>
       </h2><p>
-        Armonia finns i ett litet, hyrt behandlingsrum med ett vanligt fönster.
-        Här är tanken att skapa plats för lugn och personlig omtanke, med enkla
-        medel.
+        Armonia finns i Halmstad, i ett litet, hyrt behandlingsrum med ett
+        vanligt fönster. Här är tanken att skapa plats för lugn och personlig
+        omtanke, med enkla medel.
       </p><p>
         En stund här får vara ett avbrott i vardagen. Tid att lägga annat åt
         sidan och bara vara.
@@ -62,18 +62,20 @@ import detail from '../assets/images/room-detail.png';
             'Bakom Armonia finns en vilja att ge det lilla mötet plats. Att välkomna, lyssna och skapa en stund med dig i centrum.'
         }
       </p>{
-        !business.practitionerName && (
+        !business.practitionerBio && (
           <p class="editorial-note">
-            Här kommer en personlig presentation av behandlaren. Namn, bakgrund
-            och utbildning kompletteras före öppning.
+            Samanthas personliga presentation och bakgrund kompletteras inför
+            öppning.
           </p>
         )
       }
     </div><div class="practitioner-photo">
       <Photo
-        src={detail}
-        alt="Illustrativ närbild av en enkel trähylla med handdukar och en grön växt."
-      />
+        src={samantha}
+        alt="AI-bearbetat porträtt av Samantha Paladino, baserat på hennes fotografi."
+      /><p class="image-disclosure">
+        AI-bearbetat porträtt med illustrativ miljö.
+      </p>
     </div>
   </section>
   <ContactBand />

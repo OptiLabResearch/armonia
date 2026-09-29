@@ -14,6 +14,8 @@ const ready = () => ({
   practitionerBio: 'Approved test bio',
   email: 'test@example.com',
   phone: '+46000000000',
+  addressConfirmed: true,
+  bookingUrlConfirmed: true,
   streetAddress: 'Test street 1',
   postalCode: '000 00',
   city: 'Test city',
@@ -92,4 +94,12 @@ test('empty treatment list and unapproved copy prevent release', () => {
 test('malformed treatment collections return launch blockers', () => {
   for (const treatments of [null, {}, [null]])
     assert.ok(launchIssues({ ...ready(), treatments }).length > 0);
+});
+
+test('temporary address and booking link cannot pass the launch gate', () => {
+  for (const field of ['addressConfirmed', 'bookingUrlConfirmed'])
+    assert.throws(
+      () => assertLaunchReady({ ...ready(), [field]: false }),
+      /must be confirmed/,
+    );
 });
