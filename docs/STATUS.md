@@ -15,7 +15,11 @@ Implementation is available in [draft pull request #1](https://github.com/OptiLa
 
 ## Deployment blockers
 
-Cloudflare CLI authentication was checked with `wrangler whoami`: **not authenticated**. No connected Cloudflare tools were available, and plugin discovery returned no Cloudflare connection. The user requested a Bitwarden Secrets Manager lookup; the CLI is installed, but using the existing protected bootstrap credential requires explicit approval after automatic review rejected cross-account credential access. No secret values were retrieved or exposed. Therefore no Pages project, Git integration, preview deployment, DNS record, or custom domain has been created or changed. Domain/HTTPS verification remains pending.
+Cloudflare CLI authentication was checked with `wrangler whoami`: **not authenticated**. Following explicit user approval, the existing Bitwarden bootstrap was used successfully without displaying or persisting secret values. That machine account can see only the **AI** project. Its sole Cloudflare token is `CLOUDFLARE_WORKERS_AI_API_KEY`; the other Cloudflare entry is an account ID. Token verification returned HTTP 401 (`Invalid API Token`), Pages access returned HTTP 401 (`Authentication error`), and the `optiqo.dev` zone lookup returned HTTP 403 (`Invalid access token`). A metadata search found no separate full-access Cloudflare token in the accessible project.
+
+The remaining credential blocker is a **valid Cloudflare token accessible to this Bitwarden machine account**, not local approval. Grant it access to the project containing the intended token, or add a dedicated `CLOUDFLARE_API_TOKEN` to an accessible project. Keep existing unrelated credentials unchanged. Pages setup needs account Pages edit access; domain setup also needs zone read and DNS edit access for `optiqo.dev`.
+
+No Pages project, Git integration, preview deployment, DNS record, or custom domain has been created or changed. Domain/HTTPS verification remains pending.
 
 The public launch is additionally blocked by missing confirmed practitioner details, contact/address/directions, treatment duration/price/approval, external booking URL, and Swedish copy approval. `launchReady` and `copyApproved` remain false. The initial `main` branch is only a bootstrap commit; website implementation is isolated on `feat/swedish-armonia-site` for PR review. No merge is authorized by this delivery.
 
