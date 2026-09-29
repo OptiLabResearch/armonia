@@ -2,6 +2,8 @@
 
 Updated 2026-09-29.
 
+Implementation is available in [draft pull request #1](https://github.com/OptiLabResearch/armonia/pull/1). Both the bootstrap `main` and implementation branch are pushed. Nothing is merged.
+
 ## Implemented
 
 - Four Swedish pages, a Swedish 404, responsive cream/olive design, botanical SVG identity, locally served fonts, accessible mobile navigation, and shared booking/contact components.
@@ -13,7 +15,7 @@ Updated 2026-09-29.
 
 ## Deployment blockers
 
-Cloudflare CLI authentication was checked with `wrangler whoami`: **not authenticated**. No connected Cloudflare tools were available, and plugin discovery returned no Cloudflare connection. Therefore no Pages project, Git integration, preview deployment, DNS record, or custom domain has been created or changed. Domain/HTTPS verification remains pending.
+Cloudflare CLI authentication was checked with `wrangler whoami`: **not authenticated**. No connected Cloudflare tools were available, and plugin discovery returned no Cloudflare connection. The user requested a Bitwarden Secrets Manager lookup; the CLI is installed, but using the existing protected bootstrap credential requires explicit approval after automatic review rejected cross-account credential access. No secret values were retrieved or exposed. Therefore no Pages project, Git integration, preview deployment, DNS record, or custom domain has been created or changed. Domain/HTTPS verification remains pending.
 
 The public launch is additionally blocked by missing confirmed practitioner details, contact/address/directions, treatment duration/price/approval, external booking URL, and Swedish copy approval. `launchReady` and `copyApproved` remain false. The initial `main` branch is only a bootstrap commit; website implementation is isolated on `feat/swedish-armonia-site` for PR review. No merge is authorized by this delivery.
 
@@ -37,5 +39,6 @@ Browser accessibility checks identified two low-contrast secondary text colours;
 - Generated foliage has a real alpha channel. All seven generated assets were visually inspected.
 - Desktop/tablet/mobile homepage screenshots and desktop/mobile inner-page screenshots were captured for visual review. Durable homepage previews are in `docs/previews/`.
 - Final independent review verified the fixes and reported no remaining substantive bugs in its scope.
+- GitHub Actions run `36617268068` did not start any steps: GitHub reported failed account payments or a spending-limit restriction. This is an account-level blocker, not a failing repository test. Local checks above passed; hosted CI remains unverified.
 
 Automated accessibility checks are not a complete accessibility certification. Browser execution was Chromium-only. Hosted Cloudflare preview, real external booking, custom domain, and HTTPS checks could not be run without account access and confirmed business data.
