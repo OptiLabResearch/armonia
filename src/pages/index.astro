@@ -1,0 +1,196 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import BookingButton from '../components/BookingButton.astro';
+import ContactBand from '../components/ContactBand.astro';
+import Icon from '../components/Icon.astro';
+import Mark from '../components/Mark.astro';
+import TreatmentCard from '../components/TreatmentCard.astro';
+import { business } from '../data/site';
+import hero from '../assets/images/hero-room.png';
+import room from '../assets/images/room-view.png';
+import oil from '../assets/images/oil.png';
+import detail from '../assets/images/room-detail.png';
+import samantha from '../assets/images/samantha-portrait.png';
+import botanical from '../assets/images/botanical.png';
+---
+
+<Base
+  title="Armonia – Massage & egenomsorg i Halmstad"
+  description="En stund för dig. Mer balans i vardagen. Upptäck Armonia, en liten plats för massage, lugn och personlig omtanke i Halmstad."
+>
+  <section class="hero" aria-labelledby="hero-title">
+    <Photo
+      src={hero}
+      alt="Illustrativ bild av ett litet, ljust behandlingsrum med massagebänk, trädetaljer och ett vanligt fönster."
+      class="hero-image"
+      eager
+      sizes="100vw"
+    />
+    <div class="hero-shade"></div>
+    <div class="container hero-content">
+      <p class="eyebrow">VÄLKOMMEN TILL ARMONIA I HALMSTAD</p><h1
+        id="hero-title"
+      >
+        En stund för dig.<br />Mer balans<br /><em>i vardagen.</em>
+      </h1><p class="hero-intro">
+        Låt vardagen vänta en liten stund.<br />Här finns plats för lugn,
+        närvaro och dig.
+      </p><BookingButton variant="light" /><span class="hero-caption"
+        >LITET RUM. STOR OMTANKE.</span
+      >
+    </div>
+    <a href="#omtanke" class="hero-scroll" aria-label="Läs mer om Armonia"
+      ><span>LANDA HÄR</span><span aria-hidden="true">↓</span></a
+    >
+  </section>
+
+  <section
+    class="philosophy section"
+    id="omtanke"
+    aria-labelledby="philosophy-title"
+  >
+    <Image
+      src={botanical}
+      alt=""
+      width={290}
+      class="botanical botanical-left"
+    />
+    <div class="container narrow">
+      <p class="eyebrow">VÅR TANKE</p><h2 id="philosophy-title">
+        Omtanke för kropp<br />och <em>tankar.</em>
+      </h2><p>
+        Armonia i Halmstad är en plats för massage och egenomsorg. Här får du
+        stanna upp, känna efter och ge dig själv tid – med hela dig i fokus. En
+        personlig stund, utan krav på prestation.
+      </p><div class="small-rule"></div>
+    </div>
+    <p class="margin-note" aria-hidden="true">
+      En lugnare stund.<br />En mjukare vardag.
+    </p>
+  </section>
+
+  <section
+    class="container section offerings"
+    aria-labelledby="offerings-title"
+  >
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">MED DIG I CENTRUM</p><h2 id="offerings-title">
+          Omtanke, i varje liten detalj.
+        </h2>
+      </div><a class="text-link" href="/behandlingar/"
+        >Utforska behandlingar <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    <div class="offering-grid">
+      <TreatmentCard treatment={business.treatments[0]} compact />
+      <article class="story-card">
+        <Photo
+          src={oil}
+          alt="En enkel flaska massageolja i mjukt dagsljus."
+          sizes="(min-width: 760px) 33vw, 100vw"
+        /><div class="story-copy">
+          <p class="eyebrow">DET ENKLA FÅR TA PLATS</p><h3>
+            En stund utan måsten
+          </h3><p>
+            Lägg vardagens tempo åt sidan. Här får en liten paus ta sin tid.
+          </p><a class="text-link" href="/om-armonia/"
+            >Tanken bakom Armonia <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </article>
+      <article class="story-card">
+        <Photo
+          src={detail}
+          alt="Illustrativ bild av en enkel hylla med handdukar och en grön växt."
+          sizes="(min-width: 760px) 33vw, 100vw"
+        /><div class="story-copy">
+          <p class="eyebrow">LITET OCH PERSONLIGT</p><h3>
+            Plats att bara vara
+          </h3><p>
+            Ett litet behandlingsrum. En stilla miljö. Och utrymme för dig.
+          </p><a class="text-link" href="/om-armonia/#rummet"
+            >Läs om rummet <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="room-feature" aria-labelledby="room-title">
+    <div class="room-feature-photo">
+      <Photo
+        src={room}
+        alt="Illustrativ vy av ett litet behandlingsrum med en massagebänk och en enkel trähylla."
+      />
+    </div><div class="room-feature-copy">
+      <p class="eyebrow">EN LITEN PLATS FÖR EN EGEN STUND</p><h2
+        id="room-title"
+      >
+        Du behöver inte<br />åka långt <em>från vardagen.</em>
+      </h2><p>
+        Armonia finns i ett litet, hyrt behandlingsrum. Inget storslaget – bara
+        en enkel plats med utrymme för lugn och personlig omtanke.
+      </p><p>Här får det lilla vara nog.</p><ul class="leaf-list">
+        <li><Icon name="leaf" /> En liten och personlig miljö</li><li>
+          <Icon name="leaf" /> En stund med dig i fokus
+        </li><li><Icon name="leaf" /> Utrymme att komma som du är</li>
+      </ul><a class="text-link" href="/om-armonia/"
+        >Lär känna Armonia <span aria-hidden="true">↗</span></a
+      ><span class="image-disclosure"
+        >Bilden är en AI-genererad stämningsbild.</span
+      >
+    </div>
+  </section>
+
+  <section class="values container" aria-label="Tanken bakom Armonia">
+    <div>
+      <Icon name="leaf" /><h3>Enkelt & nära</h3><p>Omtanke i det lilla</p>
+    </div><div>
+      <Icon name="heart" /><h3>Personligt bemötande</h3><p>
+        En stund för just dig
+      </p>
+    </div><div>
+      <Mark /><h3>Plats för lugn</h3><p>Låt vardagen vänta</p>
+    </div><div>
+      <Icon name="sun" /><h3>I din egen takt</h3><p>Utrymme att landa</p>
+    </div>
+  </section>
+
+  <section
+    class="container section practitioner"
+    aria-labelledby="samantha-title"
+  >
+    <div class="practitioner-copy">
+      <p class="eyebrow">MÄNNISKAN BAKOM ARMONIA</p>
+      <h2 id="samantha-title">
+        Hej, jag heter<br /><em>{business.practitionerName}.</em>
+      </h2>
+      <p>
+        Välkommen till Armonia i {business.city}. Här får det personliga mötet
+        ta plats, med tid för dig och en paus från vardagen.
+      </p>
+      <a class="text-link" href="/om-armonia/"
+        >Lär känna Armonia <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    <div class="practitioner-photo">
+      <Photo
+        src={samantha}
+        alt="AI-bearbetat porträtt av Samantha Paladino, baserat på hennes fotografi."
+      />
+      <p class="image-disclosure">
+        AI-bearbetat porträtt med illustrativ miljö.
+      </p>
+    </div>
+  </section>
+
+  <section class="quiet-quote section">
+    <p class="eyebrow">EN LITEN PÅMINNELSE</p><p class="quote">
+      Du får stanna upp.<br /><em>Du får ta hand om dig.</em>
+    </p><div class="small-rule"></div>
+  </section>
+  <ContactBand />
+</Base>

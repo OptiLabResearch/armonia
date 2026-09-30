@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import ContactBand from '../components/ContactBand.astro';
+import Mark from '../components/Mark.astro';
+import { business } from '../data/site';
+import room from '../assets/images/room-view.png';
+import samantha from '../assets/images/samantha-portrait.png';
+---
+
+<Base
+  title="Om Samantha Paladino & Armonia i Halmstad"
+  description="Möt Samantha Paladino och tanken bakom Armonia i Halmstad: massage, egenomsorg och ett personligt möte i en liten, lugn miljö."
+>
+  <div class="page-intro container narrow">
+    <p class="eyebrow">TANKEN BAKOM ARMONIA</p><h1>
+      Litet rum.<br /><em>Stor omtanke.</em>
+    </h1><p>
+      En enkel plats. Ett personligt möte.<br />En stund som får vara din.
+    </p>
+  </div>
+  <section
+    class="container about-grid"
+    id="rummet"
+    aria-labelledby="room-heading"
+  >
+    <div class="about-photo">
+      <Photo
+        src={room}
+        alt="AI-genererad illustration av ett litet behandlingsrum med ett vanligt fönster, massagebänk och trähylla."
+        eager
+      /><p class="image-disclosure">
+        Stämningsbild – inte ett fotografi av den faktiska lokalen.
+      </p>
+    </div><div class="about-copy">
+      <p class="eyebrow">EN PLATS ATT LANDA</p><h2 id="room-heading">
+        Det behöver inte vara stort<br />för att kännas <em>välkomnande.</em>
+      </h2><p>
+        Armonia finns i Halmstad, i ett litet, hyrt behandlingsrum med ett
+        vanligt fönster. Här är tanken att skapa plats för lugn och personlig
+        omtanke, med enkla medel.
+      </p><p>
+        En stund här får vara ett avbrott i vardagen. Tid att lägga annat åt
+        sidan och bara vara.
+      </p>
+    </div>
+  </section>
+  <section
+    class="container section practitioner"
+    aria-labelledby="practitioner-title"
+  >
+    <div class="practitioner-copy">
+      <Mark /><p class="eyebrow">MÄNNISKAN BAKOM</p><h2 id="practitioner-title">
+        {
+          business.practitionerName
+            ? `Hej, jag heter ${business.practitionerName}.`
+            : 'Ett personligt möte.'
+        }
+      </h2><p>
+        {
+          business.practitionerBio ??
+            'Bakom Armonia finns en vilja att ge det lilla mötet plats. Att välkomna, lyssna och skapa en stund med dig i centrum.'
+        }
+      </p><p>
+        För mig hör kropp och vardag ihop. Hur vi tar hand om oss behöver inte
+        vara komplicerat. Ibland handlar det om att lyssna på vad vi behöver, få
+        en stunds omtanke och låta något få ta lite tid.
+      </p>
+      <p>
+        Jag vill att mötet hos Armonia ska kännas personligt och enkelt. Du
+        behöver inte veta exakt vad du söker när du hör av dig. Vi börjar med
+        ett samtal om dina önskemål och vad som känns bra för dig.
+      </p>{
+        !business.practitionerBio && (
+          <p class="editorial-note">
+            Samanthas personliga presentation och bakgrund kompletteras inför
+            öppning.
+          </p>
+        )
+      }
+    </div><div class="practitioner-photo">
+      <Photo
+        src={samantha}
+        alt="AI-bearbetat porträtt av Samantha Paladino, baserat på hennes fotografi."
+      /><p class="image-disclosure">
+        AI-bearbetat porträtt med illustrativ miljö.
+      </p>
+    </div>
+  </section>
+  <section class="container section practical" aria-labelledby="approach-title">
+    <p class="eyebrow">ENKELT, PERSONLIGT OCH NÄRA</p>
+    <h2 id="approach-title">Omtanke om <em>hela dig.</em></h2>
+    <div class="practical-grid">
+      <div>
+        <h3>Vad helhet betyder här</h3><p>
+          För Armonia betyder ett helhetsperspektiv att se människan bakom
+          bokningen. Kropp, tankar och vardag hör ihop. Därför får både
+          behandlingen och det personliga bemötandet ta plats.
+        </p>
+      </div>
+      <div>
+        <h3>Du sätter gränserna</h3><p>
+          Dina önskemål och din bekvämlighet är viktiga. Berätta om något inte
+          känns bra, om du vill ändra trycket eller om du hellre vill ha en tyst
+          stund. Du ska kunna säga till och ställa frågor.
+        </p>
+      </div>
+      <div>
+        <h3>Egenomsorg utan måsten</h3><p>
+          En stund hos Armonia behöver inte handla om att förändra dig. Den kan
+          få vara tid att vila, känna efter och göra något omtänksamt för dig
+          själv.
+        </p>
+      </div>
+    </div>
+    <div class="button-row">
+      <a class="text-link" href="/behandlingar/"
+        >Utforska behandlingarna <span aria-hidden="true">↗</span></a
+      ><a class="text-link" href="/kontakt/"
+        >Hör av dig till Samantha <span aria-hidden="true">↗</span></a
+      >
+    </div>
+  </section>
+  <ContactBand />
+</Base>

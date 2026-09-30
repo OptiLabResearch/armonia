@@ -1,0 +1,22 @@
+---
+import Photo from './Photo.astro';
+import BookingButton from './BookingButton.astro';
+import linen from '../assets/images/linen.png';
+---
+
+<section class="contact-band" aria-labelledby="contact-band-title">
+  <div class="contact-band-photo">
+    <Photo src={linen} alt="Mjuka, vikta handdukar på en enkel träpall." />
+  </div>
+  <div class="contact-band-copy">
+    <p class="eyebrow">DIN STUND BÖRJAR HÄR</p><h2 id="contact-band-title">
+      Ge dig själv<br />en liten paus.
+    </h2><p>
+      En stund att landa, andas och bara vara.<br />Välkommen till Armonia.
+    </p><div class="button-row">
+      <BookingButton variant="light" /><a class="text-link" href="/kontakt/"
+        >Kontakta mig <span aria-hidden="true">↗</span></a
+      >
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import { bookingHref, business } from '../data/site';
+interface Props {
+  label?: string;
+  url?: string | null;
+  variant?: 'light' | 'outline';
+  class?: string;
+}
+const {
+  label = 'Boka behandling',
+  url,
+  variant,
+  class: className,
+} = Astro.props;
+---
+
+<a
+  class:list={['button', variant && `button--${variant}`, className]}
+  href={bookingHref(url)}
+  aria-label={!business.bookingUrlConfirmed &&
+  bookingHref(url) === business.bookingUrl
+    ? `${label} – tillfällig länk till Bokadirekts startsida`
+    : undefined}
+>
+  {label}<span aria-hidden="true">↗</span>
+</a>

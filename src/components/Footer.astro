@@ -1,0 +1,24 @@
+---
+import Mark from './Mark.astro';
+import { navigation, isDraft } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <a href="/" class="brand" aria-label="Armonia – till startsidan"
+      ><Mark /><span class="wordmark">ARMONIA</span><span class="brand-tagline"
+        >EN STUND FÖR DIG</span
+      ></a
+    >
+    <nav aria-label="Sidfotsmeny">
+      {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <p class="footer-note">Lite mer lugn.<br /><em>Lite mer du.</em></p>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {new Date().getFullYear()} Armonia</p><p>
+      AI-genererade stämningsbilder. Rummet och behandlingarna visas
+      illustrativt.
+    </p>{isDraft && <span class="draft-label">Förhandsvisning</span>}
+  </div>
+</footer>

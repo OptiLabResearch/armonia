@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import TreatmentCard from '../components/TreatmentCard.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { business, isDraft } from '../data/site';
+---
+
+<Base
+  title="Massage & egenomsorg i Halmstad | Armonia"
+  description="Utforska Armonias planerade behandlingar i Halmstad: massage, kroppspeeling, ansiktsritual och avslappning. Läs om upplägg och kontakt inför ditt besök."
+>
+  <div class="page-intro container narrow">
+    <p class="eyebrow">LÅT VARDAGEN VÄNTA</p><h1>
+      En stund för <em>kroppen.</em>
+    </h1><p>
+      Massage, kroppsvård och tid att bara vara. Här får du en första inblick i
+      behandlingarna som planeras för Armonia i Halmstad.
+    </p>
+  </div>
+  <nav class="container treatment-navigation" aria-label="Hitta behandling">
+    {
+      business.treatments.map((treatment) => (
+        <a class="text-link" href={`#${treatment.id}`}>
+          {treatment.name}
+        </a>
+      ))
+    }
+  </nav>
+  <p class="container editorial-note">
+    Preliminärt utbud. Beskrivningar, tider och priser fastställs före öppning.
+  </p>
+  <section class="container treatment-list" aria-label="Behandlingar">
+    {
+      business.treatments.map((treatment) => (
+        <TreatmentCard treatment={treatment} />
+      ))
+    }
+  </section>
+  <section
+    class="section container visit-section"
+    aria-labelledby="visit-title"
+  >
+    <div>
+      <p class="eyebrow">INFÖR DIN STUND</p><h2 id="visit-title">
+        Det ska kännas enkelt<br />att komma hit.
+      </h2><p>
+        Har du frågor eller något du vill berätta inför besöket? Ta kontakt
+        innan du bokar så kan ni prata om vad som passar dig.
+      </p>{
+        isDraft && (
+          <p class="editorial-note">
+            Information om bokning, betalning och avbokning kompletteras inför
+            öppning.
+          </p>
+        )
+      }
+    </div><div class="steps">
+      <article>
+        <span>01</span><div>
+          <h3>Hitta din behandling</h3><p>
+            Läs presentationen och ta del av tid och pris innan du bokar.
+          </p>
+        </div>
+      </article><article>
+        <span>02</span><div>
+          <h3>Boka din stund</h3><p>
+            Välj en ledig tid via vår externa bokningstjänst när bokningen är
+            öppen.
+          </p>
+        </div>
+      </article><article>
+        <span>03</span><div>
+          <h3>Kom som du är</h3><p>
+            Ge dig själv tid att landa. Praktisk information får du i samband
+            med bokningen.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <ContactBand />
+</Base>
