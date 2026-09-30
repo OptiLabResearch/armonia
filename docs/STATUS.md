@@ -1,6 +1,6 @@
 # Delivery status
 
-Updated 2026-09-29.
+Updated 2026-09-30.
 
 Implementation is available in [draft pull request #1](https://github.com/OptiLabResearch/armonia/pull/1). Both the bootstrap `main` and implementation branch are pushed. Nothing is merged.
 
@@ -21,7 +21,7 @@ Cloudflare access is working through a user-supplied token in the ignored local 
 
 Created the **armonia** Cloudflare Pages project in **Growthimize**, connected to `OptiLabResearch/armonia` through the existing GitHub integration. Cloudflare assigned `armonia-6hg.pages.dev`. The build command is `npm run build`, output is `dist`, and Node 24 is configured. Preview builds are enabled for `feat/swedish-armonia-site`. Production branch is `main`, with automatic production deployments disabled and the explicit launch gate enabled. The first branch preview deployed successfully (`2d3415c2-79b9-40bc-8d8f-10936a24f8f7`). Its stable preview address is https://feat-swedish-armonia-site.armonia-6hg.pages.dev.
 
-No custom domain or DNS record has been created. `armonia.optiqo.dev` had no existing DNS record when checked. Associate the hostname with Pages before creating its CNAME, after approved production is ready.
+The user authorized `armonia.optiqo.dev` as the ongoing review link on 2026-09-30. It was associated with Pages before creating a proxied CNAME targeting the latest feature-branch alias. Production remains disabled.
 
 Public launch remains blocked by address confirmation/directions, treatment duration/price/approval, final practitioner booking URL, and Swedish copy approval. `launchReady` and `copyApproved` remain false. The initial `main` branch is only a bootstrap commit; website implementation is isolated on `feat/swedish-armonia-site` for PR review. No merge is authorized by this delivery.
 
@@ -66,3 +66,11 @@ Fonts are local Latin WOFF2 files (three faces, 101,736 bytes in total). Main fa
 Validation: eight unit tests; 35 browser checks passed with four conditional skips, including accessibility and new SEO/resource checks. Local first-view resource payloads were approximately 246 KB desktop, 187 KB tablet and 148 KB mobile, with no third-party requests. These are unthrottled local measurements (resource bodies, excluding HTML), not a real-user performance guarantee. The production gate still blocks unconfirmed services, address and booking information. Email delivery and production-domain SEO cannot be verified before launch setup.
 
 Final targeted verification after font-budget assertions: Astro diagnostics and build passed; all six metadata/performance checks passed again. The homepage uses 358 bytes of inline application JavaScript, with no external scripts. Desktop and mobile About/Services screenshots were visually reviewed and saved in `docs/previews/`. No new image generation was needed.
+
+## Stable review address
+
+The latest website deployment (`91c9ea72-f9f2-403f-aebf-b6b1a38149a5`, commit `11fdb78`) succeeded and the branch alias serves all four updated services. Old hash-based preview URLs remain fixed snapshots, a likely explanation for seeing outdated content. Use https://armonia.optiqo.dev for ongoing review; it tracks the feature branch automatically.
+
+Custom domain association ID: `3c6bf35f-fef7-4e8c-b8f9-73fb36fcf22a`. DNS record ID: `0e79184ad25d78a2625a3bf3c554f74f`. The proxied CNAME targets `feat-swedish-armonia-site.armonia-6hg.pages.dev`. No unrelated records were modified. This changes the review address, not the approved launch status.
+
+Verified the review hostname over HTTPS: all four pages, hero asset, social image, robots and sitemap return 200; a missing page returns 404. All four current service names, the expanded Samantha copy, Bokadirekt link, and contact email are present. Cloudflare zone email protection rewrites the email in transit and supplies its decoder; the decoded address is correct. The site remains noindex.

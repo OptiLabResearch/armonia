@@ -25,13 +25,15 @@ Automatic production deployments are currently disabled. Enable them only after 
 
 Local API access uses `.env.cloudflare`, ignored by Git with file mode 0600. Do not commit or paste its token into logs. Required scopes are Account → Cloudflare Pages → Edit, Zone → Zone → Read, and Zone → DNS → Edit for the intended account and `optiqo.dev`. The token is used locally; it is not a website build variable.
 
-## Domain and verification
+## Review domain and verification
 
-1. Verify the intended Cloudflare account and an existing project before creating resources. Git integration may require enabling Cloudflare's GitHub app for this repository.
-2. Once the approved production build is ready, add `armonia.optiqo.dev` under the Pages project's **Custom domains**.
-3. Only after associating the hostname, create or confirm its CNAME to the actual project hostname returned by Cloudflare (`<project>.pages.dev`). Do not assume project-name availability and do not alter unrelated `optiqo.dev` records.
-4. Wait for domain activation and managed HTTPS certificate issuance using supported Cloudflare status checks.
-5. Verify `/`, `/behandlingar/`, `/om-armonia/`, `/kontakt/`, a missing route, all booking links, `/social.jpg`, `/robots.txt`, and `/sitemap-index.xml` over HTTPS. Confirm the canonical domain is `https://armonia.optiqo.dev`.
+At the user's request on 2026-09-30, **https://armonia.optiqo.dev** is the stable review URL. It is associated with the Pages project, then routed using a proxied CNAME to `feat-swedish-armonia-site.armonia-6hg.pages.dev`. This follows Cloudflare's [custom branch alias setup](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/). Keep proxying enabled: unproxied custom aliases resolve to production instead.
+
+This hostname follows the latest successful feature-branch deployment. Hash-prefixed deployment URLs are immutable snapshots and should not be shared as the ongoing review link. The branch alias is also available at https://feat-swedish-armonia-site.armonia-6hg.pages.dev.
+
+Production remains disabled and the site remains noindex while business details are pending. The user explicitly authorized this review-domain setup before the final public launch. No merge is required. When moving to an approved production release, update this CNAME to the actual production Pages hostname (or set up the final `.se` domain), and verify canonical URLs, sitemap, HTTPS and indexing settings together.
+
+Verify `/`, `/behandlingar/`, `/om-armonia/`, `/kontakt/`, a missing route, booking links, `/social.jpg`, `/robots.txt`, and `/sitemap-index.xml` over HTTPS after deployment. The canonical domain is currently `https://armonia.optiqo.dev`.
 
 The site collects no form data. External booking is a normal link; any information entered there is handled by the booking provider. Add an appropriate factual privacy notice if future integrations change this arrangement.
 
