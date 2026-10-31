@@ -1,0 +1,106 @@
+---
+import Photo from './Photo.astro';
+import BookingButton from './BookingButton.astro';
+import massage from '../assets/images/massage.png';
+import oil from '../assets/images/oil.png';
+import linen from '../assets/images/linen.png';
+import room from '../assets/images/room-detail.png';
+import { price, type Treatment } from '../data/site';
+interface Props {
+  treatment: Treatment;
+  compact?: boolean;
+}
+const { treatment, compact = false } = Astro.props;
+const illustrations: Record<string, { src: typeof massage; alt: string }> = {
+  massage: {
+    src: massage,
+    alt: 'Illustrativ bild av varsamma händer under en hand- och underarmsmassage.',
+  },
+  oil: {
+    src: oil,
+    alt: 'Stämningsbild av en oljeflaska och en vikt handduk på en trähylla.',
+  },
+  linen: {
+    src: linen,
+    alt: 'Stämningsbild av rena handdukar och mjukt linne.',
+  },
+  room: {
+    src: room,
+    alt: 'Stämningsbild av en enkel hylla med en grön växt och handdukar.',
+  },
+};
+const illustration = illustrations[treatment.image] ?? illustrations.massage;
+---
+
+<article
+  class:list={['treatment-card', { 'treatment-card--compact': compact }]}
+  id={compact ? undefined : treatment.id}
+>
+  <div class="treatment-photo">
+    <Photo
+      src={illustration.src}
+      alt={illustration.alt}
+      sizes={compact
+        ? '(min-width: 760px) 33vw, 100vw'
+        : '(min-width: 760px) 50vw, 100vw'}
+    />
+  </div>
+  <div class="treatment-copy">
+    <p class="eyebrow">EN PAUS FÖR KROPPEN</p><h2>{treatment.name}</h2><p>
+      {treatment.description}
+    </p>
+    {
+      !compact && (
+        <>
+          <>
+            <h3>Så är stunden tänkt</h3>
+            <p>{treatment.experience}</p>
+          </>
+          <>
+            <h3>En stund för dig</h3>
+            <p>{treatment.suitableFor}</p>
+          </>
+          <dl class="treatment-facts">
+            <>
+              <div>
+                <>
+                  <dt>Tid</dt>
+                  <dd>
+                    {treatment.durationMinutes
+                      ? `${treatment.durationMinutes} minuter`
+                      : 'Kompletteras inför öppning'}
+                  </dd>
+                </>
+              </div>
+              <div>
+                <>
+                  <dt>Pris</dt>
+                  <dd>
+                    {treatment.priceSek
+                      ? price(treatment.priceSek)
+                      : 'Kompletteras inför öppning'}
+                  </dd>
+                </>
+              </div>
+            </>
+          </dl>
+          {!treatment.confirmed && (
+            <p class="editorial-note">
+              Preliminär presentation. Behandlingsutbud, tider och priser är
+              ännu inte fastställda.
+            </p>
+          )}
+        </>
+      )
+    }
+    {
+      compact ? (
+        <a class="text-link" href="/behandlingar/">
+          Läs om behandlingar <span aria-hidden="true">↗</span>
+        </a>
+      ) : (
+        <BookingButton url={treatment.bookingUrl} />
+      )
+    }
+  </div>
+</article>

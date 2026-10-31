@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import BookingButton from '../components/BookingButton.astro';
+import Icon from '../components/Icon.astro';
+import { business } from '../data/site';
+import { isHttpsUrl } from '../data/launch.mjs';
+import linen from '../assets/images/linen.png';
+---
+
+<Base
+  title="Kontakt & bokning i Halmstad | Armonia"
+  description="Boka din stund hos Armonia. Här hittar du kontaktuppgifter, information om bokning och vägbeskrivning."
+>
+  <div class="page-intro container narrow">
+    <p class="eyebrow">VÄLKOMMEN ATT HÖRA AV DIG</p><h1>
+      Din stund <em>börjar här.</em>
+    </h1><p>
+      En fråga, en fundering eller dags att boka?<br />Här finns information
+      inför ditt besök.
+    </p>
+  </div>
+  <section class="container contact-layout" aria-label="Bokning och kontakt">
+    <div>
+      <div class="booking-panel" id="bokning">
+        <p class="eyebrow">GE DIG SJÄLV EN PAUS</p><h2>Boka behandling</h2>{
+          isHttpsUrl(business.bookingUrl) ? (
+            <>
+              <>
+                <p>
+                  {business.bookingUrlConfirmed
+                    ? 'Välj behandling och hitta en tid som passar dig i vår externa bokningstjänst.'
+                    : 'Bokning kommer att ske via Bokadirekt. Tills vidare går länken till Bokadirekts startsida. Direktlänken till Armonia kompletteras inför öppning.'}
+                </p>
+                <BookingButton
+                  label={
+                    business.bookingUrlConfirmed
+                      ? 'Till bokningen'
+                      : 'Till Bokadirekt'
+                  }
+                />
+              </>
+            </>
+          ) : (
+            <>
+              <>
+                <p>
+                  Bokningen öppnar snart. Här kommer du att kunna gå vidare till
+                  bokningstjänsten och välja en tid som passar dig.
+                </p>
+                <p class="booking-status">
+                  <span aria-hidden="true" /> Bokningslänk kompletteras inför
+                  öppning
+                </p>
+              </>
+            </>
+          )
+        }
+      </div><div class="contact-details">
+        <div>
+          <Icon name="pin" /><div>
+            <h3>Hitta hit</h3>{
+              business.streetAddress && business.postalCode && business.city ? (
+                <address>
+                  {business.streetAddress}
+                  <br />
+                  {business.postalCode} {business.city}
+                </address>
+              ) : (
+                <p class="missing-detail">
+                  {business.city && (
+                    <>
+                      {business.city}
+                      <br />
+                    </>
+                  )}
+                  Gatuadress och postnummer kompletteras inför öppning.
+                </p>
+              )
+            }
+            {
+              !business.addressConfirmed && business.streetAddress && (
+                <p class="missing-detail">
+                  Preliminär adress – bekräftas inför öppning.
+                </p>
+              )
+            }
+          </div>
+        </div><div>
+          <Icon name="mail" /><div>
+            <h3>E-post</h3>{
+              business.email ? (
+                <a href={`mailto:${business.email}`}>{business.email}</a>
+              ) : (
+                <p class="missing-detail">
+                  E-postadress kompletteras inför öppning.
+                </p>
+              )
+            }
+          </div>
+        </div><div>
+          <Icon name="phone" /><div>
+            <h3>Telefon</h3>{
+              business.phone ? (
+                <a href={`tel:${business.phone.replace(/[^+\d]/g, '')}`}>
+                  {business.phone}
+                </a>
+              ) : (
+                <p class="missing-detail">
+                  Telefonnummer kompletteras inför öppning.
+                </p>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div><div class="contact-photo">
+      <Photo
+        src={linen}
+        alt="Vikta, mjuka handdukar och naturligt linne i dagsljus."
+        eager
+      /><div class="photo-note">Vi ses<br /><em>en liten stund.</em></div>
+    </div>
+  </section>
+  <section class="container practical section">
+    <p class="eyebrow">BRA ATT VETA</p><h2>Inför ditt besök</h2><div
+      class="practical-grid"
+    >
+      <div>
+        <h3>Vägen hit</h3><p>
+          {
+            business.directions ??
+              'Vägbeskrivning och information om tillgänglighet kompletteras när adressen är bekräftad.'
+          }
+        </p>
+      </div><div>
+        <h3>Frågor innan du bokar?</h3><p>
+          Du är välkommen att ta kontakt om du funderar på något inför ditt
+          besök. Använd kontaktuppgifterna ovan för att höra av dig.
+        </p>
+      </div><div>
+        <h3>Din bokning</h3><p>
+          Bokningen hanteras av en extern bokningstjänst när den är öppen. Där
+          hittar du lediga tider och villkoren för din bokning.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

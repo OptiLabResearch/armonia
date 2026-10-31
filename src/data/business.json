@@ -1,0 +1,66 @@
+{
+  "name": "Armonia",
+  "launchReady": false,
+  "copyApproved": false,
+  "practitionerName": "Samantha Paladino",
+  "practitionerBio": "Jag heter Samantha Paladino och står bakom Armonia i Halmstad. Min tanke med Armonia är enkel: att skapa en plats där du får ta hand om dig själv utan krav på prestation. Massage och egenomsorg får vara ett sätt att stanna upp och ge både kroppen och tankarna en paus.",
+  "email": "info@armonia.se",
+  "phone": "0734 816 735",
+  "streetAddress": "Fiskaregatan 15",
+  "postalCode": "302 90",
+  "city": "Halmstad",
+  "directions": null,
+  "bookingUrl": "https://www.bokadirekt.se/",
+  "treatments": [
+    {
+      "id": "massage",
+      "name": "Massage",
+      "description": "En stund med lugn beröring och tid för kroppen. Vi börjar med ett kort samtal om dina önskemål, så att stunden kan utformas med din bekvämlighet i fokus.",
+      "experience": "Du berättar vilka områden du vill ge uppmärksamhet och vilket tryck som känns behagligt. Under behandlingen kan du alltid säga till om du vill ändra något.",
+      "suitableFor": "För dig som vill lägga vardagens tempo åt sidan och ta en paus med massage.",
+      "image": "massage",
+      "durationMinutes": null,
+      "priceSek": null,
+      "confirmed": false,
+      "bookingUrl": null
+    },
+    {
+      "id": "kroppspeeling",
+      "name": "Kroppspeeling",
+      "description": "En kroppsritual med peeling och en lugn avslutning. Här får själva omhändertagandet ta tid, med fokus på en behaglig upplevelse och hudens känsla.",
+      "experience": "Tanken är en varsam applicering av peeling, följd av rengöring och återfuktande kroppsvård. Produkter och upplägg väljs inför lanseringen.",
+      "suitableFor": "För dig som uppskattar kroppsvård och vill ge egenomsorgen lite mer utrymme.",
+      "image": "oil",
+      "durationMinutes": null,
+      "priceSek": null,
+      "confirmed": false,
+      "bookingUrl": null
+    },
+    {
+      "id": "ansiktsritual",
+      "name": "Ansiktsritual",
+      "description": "En stilla stund med ansiktet i fokus. Enkel hudvård möter ett lugnt tempo, utan prestationskrav eller löften om ett visst resultat.",
+      "experience": "Förslaget är en ritual med rengöring, varsam ansiktsmassage och avslutande hudvård. Exakt innehåll och produkter fastställs innan behandlingen blir bokningsbar.",
+      "suitableFor": "För dig som vill kombinera en paus med omtanke om ansiktet.",
+      "image": "linen",
+      "durationMinutes": null,
+      "priceSek": null,
+      "confirmed": false,
+      "bookingUrl": null
+    },
+    {
+      "id": "avslappningsstund",
+      "name": "Avslappningsstund",
+      "description": "En enkel paus för vila och närvaro. Du får landa i en lugn miljö och låta stunden vara fri från måsten.",
+      "experience": "Vi börjar med ett kort samtal och lämnar sedan utrymme för stillhet och vila. Det slutliga upplägget bestäms inför öppning, med din bekvämlighet som utgångspunkt.",
+      "suitableFor": "För dig som söker en stillsam stund med fokus på vila och personlig omtanke.",
+      "image": "room",
+      "durationMinutes": null,
+      "priceSek": null,
+      "confirmed": false,
+      "bookingUrl": null
+    }
+  ],
+  "addressConfirmed": false,
+  "bookingUrlConfirmed": false
+}

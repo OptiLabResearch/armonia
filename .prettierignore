@@ -1,0 +1,8 @@
+package-lock.json
+dist
+.astro
+node_modules
+test-results
+playwright-report
+src/assets
+public/social.jpg
