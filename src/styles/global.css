@@ -10,6 +10,7 @@
     --muted: #626555;
     --line: #d8d7c9;
     --serif: 'Cormorant Garamond Variable', Georgia, serif;
+    --script: 'Alex Brush', cursive;
     --sans: 'Manrope Variable', Arial, sans-serif;
   }
   * {
@@ -266,10 +267,10 @@
     margin-bottom: 6px;
   }
   .wordmark {
-    font-family: var(--serif);
-    font-size: 26px;
-    letter-spacing: 0.16em;
-    margin-right: -0.16em;
+    font-family: var(--script);
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: normal;
   }
   .brand-tagline {
     font-size: 6.5px;
@@ -1131,7 +1132,7 @@
       margin-bottom: 4px;
     }
     .wordmark {
-      font-size: 23px;
+      font-size: 29px;
     }
     .brand-tagline {
       font-size: 5.5px;
